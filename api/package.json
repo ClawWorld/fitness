@@ -1,0 +1,12 @@
+{
+  "name": "claw-fitness-vercel",
+  "version": "1.0.0",
+  "description": "Claw健身教练 - Vercel部署版本",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

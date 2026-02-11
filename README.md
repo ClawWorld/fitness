@@ -56,10 +56,53 @@ fitness-website/
 4. 第四阶段：动态计划生成（4-5天）
 
 ## 使用说明
-1. 打开 `index.html` 开始使用
+1. 打开 `start.html` 开始使用
 2. 选择当天的训练计划
 3. 记录训练数据
 4. 每周回顾进度
+
+## 部署到 Vercel
+
+### 快速部署（推荐）
+1. 将整个项目上传到 GitHub
+2. 在 Vercel 中导入 GitHub 仓库
+3. Vercel 会自动识别为静态网站
+4. 无需任何配置，直接部署
+
+### 使用 Vercel CLI
+```bash
+# 安装 Vercel CLI
+npm i -g vercel
+
+# 登录
+vercel login
+
+# 部署
+vercel
+```
+
+### 详细部署指南
+查看 [VERCEL_DEPLOYMENT.md](VERCEL_DEPLOYMENT.md) 获取详细的部署步骤和故障排除指南。
+
+### 部署后的访问
+部署成功后，Vercel 会提供一个域名，例如：
+- `https://claw-fitness.vercel.app`
+- 或者你自定义的域名
+
+## 国际化支持
+网站支持多种语言：
+- 🇨🇳 中文 (zh-CN)
+- 🇺🇸 English (en)
+- 🇯🇵 日本語 (ja)
+- 🇰🇷 한국어 (ko)
+- 🇪🇸 Español (es)
+- 🇫🇷 Français (fr)
+- 🇩🇪 Deutsch (de)
+- 🇷🇺 Русский (ru)
+- 🇸🇦 العربية (ar)
+- 🇮🇳 हिन्दी (hi)
+- 🇧🇷 Português (pt)
+- 🇮🇹 Italiano (it)
 
 ## 联系方式
 如有问题或建议，请联系你的健身教练 Claw 💪

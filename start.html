@@ -198,5 +198,24 @@
             <p>© 2026 Claw健身教练 | 你的健身伙伴</p>
         </div>
     </div>
+
+    <script>
+        // 简单的语言切换功能 - 只支持中英文
+        const languages = {
+            'zh-CN': '中文',
+            'en': 'English'
+        };
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('clawFitnessLanguage') || 'zh-CN';
+            const langKeys = Object.keys(languages);
+            const currentIndex = langKeys.indexOf(currentLang);
+            const nextIndex = (currentIndex + 1) % langKeys.length;
+            const nextLang = langKeys[nextIndex];
+            
+            localStorage.setItem('clawFitnessLanguage', nextLang);
+            alert('语言已切换为: ' + languages[nextLang]);
+        }
+    </script>
 </body>
 </html>

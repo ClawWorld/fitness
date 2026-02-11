@@ -327,6 +327,13 @@ let workoutHistory = [];
 
 // 初始化
 document.addEventListener('DOMContentLoaded', function() {
+    // 初始化语言
+    initLanguage();
+    
+    // 创建语言切换器
+    createLanguageSwitcher('language-switcher-container');
+    
+    // 初始化应用
     initializeApp();
 });
 
@@ -346,6 +353,9 @@ function initializeApp() {
     
     // 更新统计信息
     updateStats();
+    
+    // 更新国际化文本
+    updateInternationalTexts();
 }
 
 function bindEventListeners() {
@@ -377,7 +387,7 @@ function displayWorkoutPlan(month, week) {
     if (!plan) {
         planContent.innerHTML = `
             <div class="error-message">
-                暂无第${month}个月第${week}周的训练计划
+                ${t('message.no-plan', { month: month, week: week })}
             </div>
         `;
         return;
@@ -391,7 +401,7 @@ function displayWorkoutPlan(month, week) {
             html += `
                 <div class="workout-card">
                     <h4>${plan[day].title}</h4>
-                    <p><strong>时长：</strong>${plan[day].duration}</p>
+                    <p><strong>${t('workout-card.duration')}</strong>${plan[day].duration}</p>
                     <ul>
                         ${plan[day].exercises.map(ex => `<li>${ex}</li>`).join('')}
                     </ul>
@@ -405,7 +415,7 @@ function displayWorkoutPlan(month, week) {
         html += `
             <div class="workout-card" style="border-left-color: #ff6b6b;">
                 <h4>${plan.saturday.title}</h4>
-                <p><strong>时长：</strong>${plan.saturday.duration}</p>
+                <p><strong>${t('workout-card.duration')}</strong>${plan.saturday.duration}</p>
                 <ul>
                     ${plan.saturday.exercises.map(ex => `<li>${ex}</li>`).join('')}
                 </ul>
@@ -423,7 +433,7 @@ function saveWorkout() {
     const notes = document.getElementById('workout-notes').value;
 
     if (!date || !type || !duration) {
-        showMessage('请填写所有必填项', 'error');
+        showMessage(t('message.error'), 'error');
         return;
     }
 
@@ -446,14 +456,14 @@ function saveWorkout() {
     // 清空表单
     document.getElementById('workout-notes').value = '';
     
-    showMessage('训练记录已保存！💪', 'success');
+    showMessage(t('message.success'), 'success');
 }
 
 function displayWorkoutHistory() {
     const historyList = document.getElementById('history-list');
     
     if (workoutHistory.length === 0) {
-        historyList.innerHTML = '<p style="color: #a0a0a0;">暂无训练记录</p>';
+        historyList.innerHTML = `<p style="color: #a0a0a0;">${t('log-history.empty')}</p>`;
         return;
     }
 
@@ -469,7 +479,7 @@ function displayWorkoutHistory() {
             <div class="history-item">
                 <div class="date">${workout.date}</div>
                 <div class="type">${workout.typeText}</div>
-                <div class="duration">时长：${workout.duration}分钟</div>
+                <div class="duration">${t('workout-card.duration')}${workout.duration}分钟</div>
                 ${workout.notes ? `<div class="notes">${workout.notes}</div>` : ''}
             </div>
         `;
@@ -550,6 +560,119 @@ function showMessage(text, type) {
             messageDiv.remove();
         }
     }, 3000);
+}
+
+// 更新国际化文本
+function updateInternationalTexts() {
+    // 更新头部
+    const headerTitle = document.querySelector('.header h1');
+    const headerSubtitle = document.querySelector('.header .subtitle');
+    if (headerTitle) headerTitle.textContent = t('header.title');
+    if (headerSubtitle) headerSubtitle.textContent = t('header.subtitle');
+    
+    // 更新月份选择器标题
+    const monthTitle = document.querySelector('.month-selector h2');
+    if (monthTitle) monthTitle.textContent = t('month-selector.title');
+    
+    // 更新月份按钮文本
+    document.querySelectorAll('.month-btn').forEach(btn => {
+        const month = btn.getAttribute('data-month');
+        if (month === '1') btn.textContent = t('month-selector.month1');
+        if (month === '2') btn.textContent = t('month-selector.month2');
+        if (month === '3') btn.textContent = t('month-selector.month3');
+    });
+    
+    // 更新周选择器标题
+    const weekTitle = document.querySelector('.week-tabs');
+    if (weekTitle) {
+        const titleElement = weekTitle.previousElementSibling;
+        if (titleElement && titleElement.tagName === 'H2') {
+            titleElement.textContent = t('week-selector.title');
+        }
+    }
+    
+    // 更新周按钮文本
+    document.querySelectorAll('.week-tab').forEach(btn => {
+        const week = btn.getAttribute('data-week');
+        if (week === '1') btn.textContent = t('week-selector.week1');
+        if (week === '2') btn.textContent = t('week-selector.week2');
+        if (week === '3') btn.textContent = t('week-selector.week3');
+        if (week === '4') btn.textContent = t('week-selector.week4');
+    });
+    
+    // 更新训练计划部分标题
+    const planTitle = document.querySelector('.plan-section h2');
+    if (planTitle) planTitle.textContent = t('plan-section.title');
+    
+    // 更新训练记录部分标题
+    const logTitle = document.querySelector('.log-section h2');
+    if (logTitle) logTitle.textContent = t('log-section.title');
+    
+    // 更新训练记录表单标签
+    const dateLabel = document.querySelector('label[for="workout-date"]');
+    const typeLabel = document.querySelector('label[for="workout-type"]');
+    const durationLabel = document.querySelector('label[for="workout-duration"]');
+    const notesLabel = document.querySelector('label[for="workout-notes"]');
+    
+    if (dateLabel) dateLabel.textContent = t('log-form.date');
+    if (typeLabel) typeLabel.textContent = t('log-form.type');
+    if (durationLabel) durationLabel.textContent = t('log-form.duration');
+    if (notesLabel) notesLabel.textContent = t('log-form.notes');
+    
+    // 更新训练部位选项
+    const typeSelect = document.getElementById('workout-type');
+    if (typeSelect) {
+        const options = typeSelect.options;
+        if (options.length >= 5) {
+            options[0].text = t('log-form.type.chest');
+            options[1].text = t('log-form.type.arms');
+            options[2].text = t('log-form.type.abs');
+            options[3].text = t('log-form.type.back');
+            options[4].text = t('log-form.type.legs');
+        }
+    }
+    
+    // 更新备注占位符
+    const notesTextarea = document.getElementById('workout-notes');
+    if (notesTextarea) notesTextarea.placeholder = t('log-form.notes.placeholder');
+    
+    // 更新保存按钮
+    const saveButton = document.querySelector('.btn-primary');
+    if (saveButton) saveButton.textContent = t('log-form.save');
+    
+    // 更新历史记录标题
+    const historyTitle = document.querySelector('.workout-history h3');
+    if (historyTitle) historyTitle.textContent = t('log-history.title');
+    
+    // 更新进度追踪标题
+    const progressTitle = document.querySelector('.progress-section h2');
+    if (progressTitle) progressTitle.textContent = t('progress-section.title');
+    
+    // 更新进度统计标签
+    const statLabels = document.querySelectorAll('.stat-label');
+    if (statLabels.length >= 3) {
+        statLabels[0].textContent = t('progress.total-workouts');
+        statLabels[1].textContent = t('progress.total-hours');
+        statLabels[2].textContent = t('progress.current-week');
+    }
+    
+    // 更新教练建议标题
+    const coachTitle = document.querySelector('.coach-section h2');
+    if (coachTitle) coachTitle.textContent = t('coach-section.title');
+    
+    // 更新教练建议内容
+    const coachTips = document.querySelectorAll('.tip');
+    if (coachTips.length >= 3) {
+        coachTips[0].innerHTML = `<strong>${t('coach-tip1.title')}</strong>${t('coach-tip1.text')}`;
+        coachTips[1].innerHTML = `<strong>${t('coach-tip2.title')}</strong>${t('coach-tip2.text')}`;
+        coachTips[2].innerHTML = `<strong>${t('coach-tip3.title')}</strong>${t('coach-tip3.text')}`;
+    }
+    
+    // 更新页脚
+    const footerCopyright = document.querySelector('.footer p');
+    const footerDisclaimer = document.querySelector('.disclaimer');
+    if (footerCopyright) footerCopyright.textContent = t('footer.copyright');
+    if (footerDisclaimer) footerDisclaimer.textContent = t('footer.disclaimer');
 }
 
 // 导出函数供HTML调用
