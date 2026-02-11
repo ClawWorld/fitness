@@ -90,19 +90,9 @@ vercel
 - 或者你自定义的域名
 
 ## 国际化支持
-网站支持多种语言：
+网站支持中英文切换：
 - 🇨🇳 中文 (zh-CN)
 - 🇺🇸 English (en)
-- 🇯🇵 日本語 (ja)
-- 🇰🇷 한국어 (ko)
-- 🇪🇸 Español (es)
-- 🇫🇷 Français (fr)
-- 🇩🇪 Deutsch (de)
-- 🇷🇺 Русский (ru)
-- 🇸🇦 العربية (ar)
-- 🇮🇳 हिन्दी (hi)
-- 🇧🇷 Português (pt)
-- 🇮🇹 Italiano (it)
 
 ## 联系方式
 如有问题或建议，请联系你的健身教练 Claw 💪

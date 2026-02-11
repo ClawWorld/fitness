@@ -106,8 +106,8 @@ console.log('========================\n');
 const i18nPath = path.join(__dirname, 'js/i18n.js');
 if (fs.existsSync(i18nPath)) {
     const i18nContent = fs.readFileSync(i18nPath, 'utf8');
-    const languageCount = (i18nContent.match(/'zh-CN'|'en'|'ja'|'ko'|'es'|'fr'|'de'|'ru'|'ar'|'hi'|'pt'|'it'/g) || []).length;
-    console.log(`✅ 国际化支持: ${languageCount} 种语言`);
+    const languageCount = (i18nContent.match(/'zh-CN'|'en'/g) || []).length;
+    console.log(`✅ 国际化支持: ${languageCount} 种语言（中英文）`);
     
     // 检查翻译数量
     const translationCount = (i18nContent.match(/'header\.title'|'header\.subtitle'|'button\.start'/g) || []).length;
