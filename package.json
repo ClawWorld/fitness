@@ -8,7 +8,7 @@
     "dev": "node server.js",
     "serve": "python3 -m http.server 8080 --directory .",
     "serve2": "python -m SimpleHTTPServer 8080",
-    "vercel": "node server.js"
+    "vercel-build": "node server.js"
   },
   "keywords": [
     "fitness",
@@ -24,6 +24,6 @@
     "url": "https://github.com/yourusername/claw-fitness"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=22.0.0"
   }
 }
