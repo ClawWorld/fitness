@@ -8,7 +8,7 @@
     "dev": "node server.js",
     "serve": "python3 -m http.server 8080 --directory .",
     "serve2": "python -m SimpleHTTPServer 8080",
-    "vercel-build": "node server.js"
+    "vercel": "node server.js"
   },
   "keywords": [
     "fitness",
