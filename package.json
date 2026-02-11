@@ -1,0 +1,28 @@
+{
+  "name": "claw-fitness-website",
+  "version": "1.0.0",
+  "description": "Claw健身教练 - 你的私人健身助手",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "python3 -m http.server 8080 --directory .",
+    "serve2": "python -m SimpleHTTPServer 8080"
+  },
+  "keywords": [
+    "fitness",
+    "workout",
+    "training",
+    "beginner",
+    "exercise"
+  ],
+  "author": "Claw健身教练",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/claw-fitness"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

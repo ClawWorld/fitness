@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claw健身教练 - 你的私人健身助手</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1>💪 Claw健身教练</h1>
+            <p class="subtitle">你的私人健身助手</p>
+        </header>
+
+        <!-- 月份选择 -->
+        <section class="month-selector">
+            <h2>选择月份</h2>
+            <div class="month-buttons">
+                <button class="month-btn active" data-month="1">第1个月</button>
+                <button class="month-btn" data-month="2">第2个月</button>
+                <button class="month-btn" data-month="3">第3个月</button>
+            </div>
+        </section>
+
+        <!-- 训练计划展示 -->
+        <section class="plan-section">
+            <h2>本月训练计划</h2>
+            <div class="week-tabs">
+                <button class="week-tab active" data-week="1">第1周</button>
+                <button class="week-tab" data-week="2">第2周</button>
+                <button class="week-tab" data-week="3">第3周</button>
+                <button class="week-tab" data-week="4">第4周</button>
+            </div>
+
+            <div class="plan-content" id="plan-content">
+                <!-- 动态加载训练计划 -->
+            </div>
+        </section>
+
+        <!-- 训练记录 -->
+        <section class="log-section">
+            <h2>训练记录</h2>
+            <div class="log-form">
+                <div class="form-group">
+                    <label for="workout-date">训练日期</label>
+                    <input type="date" id="workout-date">
+                </div>
+                <div class="form-group">
+                    <label for="workout-type">训练部位</label>
+                    <select id="workout-type">
+                        <option value="chest">前胸</option>
+                        <option value="arms">手臂</option>
+                        <option value="abs">腹部</option>
+                        <option value="back">背部</option>
+                        <option value="legs">腿部</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="workout-duration">训练时长（分钟）</label>
+                    <input type="number" id="workout-duration" min="30" max="45" value="30">
+                </div>
+                <div class="form-group">
+                    <label for="workout-notes">训练备注</label>
+                    <textarea id="workout-notes" placeholder="记录你的感受、进步或需要改进的地方..."></textarea>
+                </div>
+                <button class="btn-primary" onclick="saveWorkout()">保存训练记录</button>
+            </div>
+
+            <div class="workout-history" id="workout-history">
+                <h3>近期训练记录</h3>
+                <div id="history-list">
+                    <!-- 动态加载历史记录 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 进度追踪 -->
+        <section class="progress-section">
+            <h2>进度追踪</h2>
+            <div class="progress-stats">
+                <div class="stat">
+                    <span class="stat-value" id="total-workouts">0</span>
+                    <span class="stat-label">总训练次数</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="total-hours">0</span>
+                    <span class="stat-label">总训练时长（小时）</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="current-week">1</span>
+                    <span class="stat-label">当前周数</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 教练建议 -->
+        <section class="coach-section">
+            <h2>💪 教练建议</h2>
+            <div class="coach-tips">
+                <div class="tip">
+                    <strong>新手提示：</strong> 保持正确的姿势比增加重量更重要。如果感觉疼痛，请立即停止。
+                </div>
+                <div class="tip">
+                    <strong>恢复建议：</strong> 每次训练后确保有足够的休息时间，肌肉在休息时生长。
+                </div>
+                <div class="tip">
+                    <strong>营养提醒：</strong> 训练后30分钟内补充蛋白质，帮助肌肉恢复。
+                </div>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>© 2026 Claw健身教练 | 你的健身伙伴</p>
+            <p class="disclaimer">⚠️ 请在开始任何新的锻炼计划前咨询医生</p>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
