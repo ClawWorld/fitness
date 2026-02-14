@@ -311,13 +311,183 @@ const workoutPlans = {
     }
 };
 
+// 训练计划文案翻译，用于英文版展示
+const workoutContentTranslations = {
+    "20分钟": { "en": "20 minutes" },
+    "25分钟": { "en": "25 minutes" },
+    "30分钟": { "en": "30 minutes" },
+    "35分钟": { "en": "35 minutes" },
+    "40分钟": { "en": "40 minutes" },
+    "42分钟": { "en": "42 minutes" },
+    "45分钟": { "en": "45 minutes" },
+    "三头肌伸展：3组 × 12-15次": { "en": "Triceps Extensions: 3 sets × 12-15 reps" },
+    "三头肌伸展：4组 × 12-15次": { "en": "Triceps Extensions: 4 sets × 12-15 reps" },
+    "三头肌伸展：4组 × 15-18次": { "en": "Triceps Extensions: 4 sets × 15-18 reps" },
+    "三头肌伸展：4组 × 18-20次": { "en": "Triceps Extensions: 4 sets × 18-20 reps" },
+    "仰卧臂屈伸：2组 × 10-12次": { "en": "Lying Triceps Extensions: 2 sets × 10-12 reps" },
+    "仰卧臂屈伸：3组 × 10-12次": { "en": "Lying Triceps Extensions: 3 sets × 10-12 reps" },
+    "仰卧臂屈伸：3组 × 12-15次": { "en": "Lying Triceps Extensions: 3 sets × 12-15 reps" },
+    "仰卧臂屈伸：3组 × 15-18次": { "en": "Lying Triceps Extensions: 3 sets × 15-18 reps" },
+    "侧平板支撑：2组 × 30秒/侧": { "en": "Side Plank: 2 sets × 30 sec/side" },
+    "侧平板支撑：3组 × 35秒/侧": { "en": "Side Plank: 3 sets × 35 sec/side" },
+    "俄罗斯转体：3组 × 15次/侧": { "en": "Russian Twists: 3 sets × 15 reps/side" },
+    "俄罗斯转体：4组 × 15次/侧": { "en": "Russian Twists: 4 sets × 15 reps/side" },
+    "俄罗斯转体：4组 × 18次/侧": { "en": "Russian Twists: 4 sets × 18 reps/side" },
+    "俄罗斯转体：4组 × 20次/侧": { "en": "Russian Twists: 4 sets × 20 reps/side" },
+    "俯卧撑变式：2组 × 8-10次": { "en": "Push-up Variations: 2 sets × 8-10 reps" },
+    "俯卧撑变式：3组 × 10-12次": { "en": "Push-up Variations: 3 sets × 10-12 reps" },
+    "俯卧撑：2组 × 10次": { "en": "Push-ups: 2 sets × 10 reps" },
+    "俯卧撑：2组 × 8次": { "en": "Push-ups: 2 sets × 8 reps" },
+    "俯卧撑：3组 × 10-12次": { "en": "Push-ups: 3 sets × 10-12 reps" },
+    "俯卧撑：3组 × 10次": { "en": "Push-ups: 3 sets × 10 reps" },
+    "俯卧撑：3组 × 12次": { "en": "Push-ups: 3 sets × 12 reps" },
+    "俯卧撑：3组 × 15次": { "en": "Push-ups: 3 sets × 15 reps" },
+    "俯卧撑：3组 × 8-10次": { "en": "Push-ups: 3 sets × 8-10 reps" },
+    "俯卧撑：4组 × 10-12次": { "en": "Push-ups: 4 sets × 10-12 reps" },
+    "俯卧撑：4组 × 12-15次": { "en": "Push-ups: 4 sets × 12-15 reps" },
+    "俯卧撑：4组 × 15-18次": { "en": "Push-ups: 4 sets × 15-18 reps" },
+    "俯身飞鸟：3组 × 12-15次": { "en": "Bent-Over Reverse Flyes: 3 sets × 12-15 reps" },
+    "俯身飞鸟：4组 × 12-15次": { "en": "Bent-Over Reverse Flyes: 4 sets × 12-15 reps" },
+    "俯身飞鸟：4组 × 15-18次": { "en": "Bent-Over Reverse Flyes: 4 sets × 15-18 reps" },
+    "俯身飞鸟：4组 × 18-20次": { "en": "Bent-Over Reverse Flyes: 4 sets × 18-20 reps" },
+    "单腿提踵：2组 × 15次/腿": { "en": "Single-Leg Calf Raises: 2 sets × 15 reps/leg" },
+    "单腿提踵：3组 × 18次/腿": { "en": "Single-Leg Calf Raises: 3 sets × 18 reps/leg" },
+    "卷腹：3组 × 15-20次": { "en": "Crunches: 3 sets × 15-20 reps" },
+    "卷腹：3组 × 20-25次": { "en": "Crunches: 3 sets × 20-25 reps" },
+    "卷腹：4组 × 20-25次": { "en": "Crunches: 4 sets × 20-25 reps" },
+    "卷腹：4组 × 25-30次": { "en": "Crunches: 4 sets × 25-30 reps" },
+    "卷腹：4组 × 30-35次": { "en": "Crunches: 4 sets × 30-35 reps" },
+    "反向卷腹：2组 × 12-15次": { "en": "Reverse Crunches: 2 sets × 12-15 reps" },
+    "反向卷腹：3组 × 12-15次": { "en": "Reverse Crunches: 3 sets × 12-15 reps" },
+    "反向卷腹：3组 × 15-18次": { "en": "Reverse Crunches: 3 sets × 15-18 reps" },
+    "反向卷腹：3组 × 18-20次": { "en": "Reverse Crunches: 3 sets × 18-20 reps" },
+    "周一：前胸 + 手臂": { "en": "Monday: Chest + Arms" },
+    "周三：背部 + 腹部": { "en": "Wednesday: Back + Core" },
+    "周五：腿部": { "en": "Friday: Legs" },
+    "周六：全身轻度训练（可选）": { "en": "Saturday: Full-Body Light Session (Optional)" },
+    "哑铃划船：3组 × 10-12次": { "en": "Dumbbell Rows: 3 sets × 10-12 reps" },
+    "哑铃划船：3组 × 12-15次": { "en": "Dumbbell Rows: 3 sets × 12-15 reps" },
+    "哑铃划船：4组 × 12-15次": { "en": "Dumbbell Rows: 4 sets × 12-15 reps" },
+    "哑铃划船：4组 × 15-18次": { "en": "Dumbbell Rows: 4 sets × 15-18 reps" },
+    "哑铃划船：4组 × 18-20次": { "en": "Dumbbell Rows: 4 sets × 18-20 reps" },
+    "哑铃卧推：3组 × 10-12次": { "en": "Dumbbell Bench Press: 3 sets × 10-12 reps" },
+    "哑铃卧推：3组 × 12-15次": { "en": "Dumbbell Bench Press: 3 sets × 12-15 reps" },
+    "哑铃卧推：4组 × 12-15次": { "en": "Dumbbell Bench Press: 4 sets × 12-15 reps" },
+    "哑铃卧推：4组 × 15-18次": { "en": "Dumbbell Bench Press: 4 sets × 15-18 reps" },
+    "哑铃卧推：4组 × 18-20次": { "en": "Dumbbell Bench Press: 4 sets × 18-20 reps" },
+    "哑铃弯举：3组 × 12-15次": { "en": "Dumbbell Bicep Curls: 3 sets × 12-15 reps" },
+    "哑铃弯举：4组 × 12-15次": { "en": "Dumbbell Bicep Curls: 4 sets × 12-15 reps" },
+    "哑铃弯举：4组 × 15-18次": { "en": "Dumbbell Bicep Curls: 4 sets × 15-18 reps" },
+    "哑铃弯举：4组 × 18-20次": { "en": "Dumbbell Bicep Curls: 4 sets × 18-20 reps" },
+    "平板支撑：2组 × 30秒": { "en": "Plank: 2 sets × 30 sec" },
+    "平板支撑：2组 × 35秒": { "en": "Plank: 2 sets × 35 sec" },
+    "平板支撑：3组 × 30秒": { "en": "Plank: 3 sets × 30 sec" },
+    "平板支撑：3组 × 35秒": { "en": "Plank: 3 sets × 35 sec" },
+    "平板支撑：3组 × 40秒": { "en": "Plank: 3 sets × 40 sec" },
+    "平板支撑：3组 × 45秒": { "en": "Plank: 3 sets × 45 sec" },
+    "平板支撑：3组 × 50秒": { "en": "Plank: 3 sets × 50 sec" },
+    "平板支撑：4组 × 40秒": { "en": "Plank: 4 sets × 40 sec" },
+    "平板支撑：4组 × 45秒": { "en": "Plank: 4 sets × 45 sec" },
+    "平板支撑：4组 × 50秒": { "en": "Plank: 4 sets × 50 sec" },
+    "开合跳：2组 × 30秒": { "en": "Jumping Jacks: 2 sets × 30 sec" },
+    "开合跳：3组 × 30秒": { "en": "Jumping Jacks: 3 sets × 30 sec" },
+    "开合跳：3组 × 35秒": { "en": "Jumping Jacks: 3 sets × 35 sec" },
+    "开合跳：3组 × 40秒": { "en": "Jumping Jacks: 3 sets × 40 sec" },
+    "提踵：3组 × 15-20次": { "en": "Calf Raises: 3 sets × 15-20 reps" },
+    "提踵：3组 × 20-25次": { "en": "Calf Raises: 3 sets × 20-25 reps" },
+    "提踵：4组 × 20-25次": { "en": "Calf Raises: 4 sets × 20-25 reps" },
+    "提踵：4组 × 25-30次": { "en": "Calf Raises: 4 sets × 25-30 reps" },
+    "提踵：4组 × 30-35次": { "en": "Calf Raises: 4 sets × 30-35 reps" },
+    "波比跳：2组 × 8次": { "en": "Burpees: 2 sets × 8 reps" },
+    "波比跳：3组 × 10次": { "en": "Burpees: 3 sets × 10 reps" },
+    "深蹲：2组 × 10次": { "en": "Squats: 2 sets × 10 reps" },
+    "深蹲：2组 × 12次": { "en": "Squats: 2 sets × 12 reps" },
+    "深蹲：3组 × 10-12次": { "en": "Squats: 3 sets × 10-12 reps" },
+    "深蹲：3组 × 12-15次": { "en": "Squats: 3 sets × 12-15 reps" },
+    "深蹲：3组 × 12次": { "en": "Squats: 3 sets × 12 reps" },
+    "深蹲：3组 × 15次": { "en": "Squats: 3 sets × 15 reps" },
+    "深蹲：3组 × 18次": { "en": "Squats: 3 sets × 18 reps" },
+    "深蹲：4组 × 12-15次": { "en": "Squats: 4 sets × 12-15 reps" },
+    "深蹲：4组 × 15-18次": { "en": "Squats: 4 sets × 15-18 reps" },
+    "深蹲：4组 × 18-20次": { "en": "Squats: 4 sets × 18-20 reps" },
+    "箭步蹲：3组 × 10次/腿": { "en": "Lunges: 3 sets × 10 reps/leg" },
+    "箭步蹲：3组 × 12次/腿": { "en": "Lunges: 3 sets × 12 reps/leg" },
+    "箭步蹲：4组 × 12次/腿": { "en": "Lunges: 4 sets × 12 reps/leg" },
+    "箭步蹲：4组 × 15次/腿": { "en": "Lunges: 4 sets × 15 reps/leg" },
+    "箭步蹲：4组 × 18次/腿": { "en": "Lunges: 4 sets × 18 reps/leg" },
+    "腿弯举：3组 × 12-15次": { "en": "Leg Curls: 3 sets × 12-15 reps" },
+    "腿弯举：4组 × 12-15次": { "en": "Leg Curls: 4 sets × 12-15 reps" },
+    "腿弯举：4组 × 15-18次": { "en": "Leg Curls: 4 sets × 15-18 reps" },
+    "腿弯举：4组 × 18-20次": { "en": "Leg Curls: 4 sets × 18-20 reps" },
+    "臀桥：3组 × 15-20次": { "en": "Glute Bridges: 3 sets × 15-20 reps" },
+    "臀桥：3组 × 20-25次": { "en": "Glute Bridges: 3 sets × 20-25 reps" },
+    "臀桥：4组 × 20-25次": { "en": "Glute Bridges: 4 sets × 20-25 reps" },
+    "臀桥：4组 × 25-30次": { "en": "Glute Bridges: 4 sets × 25-30 reps" },
+    "臀桥：4组 × 30-35次": { "en": "Glute Bridges: 4 sets × 30-35 reps" },
+    "锤式弯举：3组 × 12-15次": { "en": "Hammer Curls: 3 sets × 12-15 reps" },
+    "锤式弯举：4组 × 12-15次": { "en": "Hammer Curls: 4 sets × 12-15 reps" },
+    "锤式弯举：4组 × 15-18次": { "en": "Hammer Curls: 4 sets × 15-18 reps" },
+    "锤式弯举：4组 × 18-20次": { "en": "Hammer Curls: 4 sets × 18-20 reps" },
+    "靠墙静蹲：2组 × 30秒": { "en": "Wall Sit: 2 sets × 30 sec" },
+    "靠墙静蹲：3组 × 35秒": { "en": "Wall Sit: 3 sets × 35 sec" },
+    "靠墙静蹲：3组 × 40秒": { "en": "Wall Sit: 3 sets × 40 sec" },
+    "靠墙静蹲：3组 × 45秒": { "en": "Wall Sit: 3 sets × 45 sec" },
+    "高抬腿：2组 × 30秒": { "en": "High Knees: 2 sets × 30 sec" },
+    "高抬腿：3组 × 30秒": { "en": "High Knees: 3 sets × 30 sec" },
+    "高抬腿：3组 × 35秒": { "en": "High Knees: 3 sets × 35 sec" },
+    "高抬腿：3组 × 40秒": { "en": "High Knees: 3 sets × 40 sec" }
+};
+// 训练计划与记录的多语言辅助函数
+function getLocalizedPlanText(text) {
+    const lang = typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'zh-CN';
+    if (lang === 'zh-CN' || !text) {
+        return text;
+    }
+    const translation = workoutContentTranslations[text];
+    if (translation && translation[lang]) {
+        return translation[lang];
+    }
+    return text;
+}
+
+function formatDurationLabel(value) {
+    if (typeof value === 'number' && !Number.isNaN(value)) {
+        const lang = typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'zh-CN';
+        return lang === 'zh-CN' ? `${value}分钟` : `${value} min`;
+    }
+    if (typeof value === 'string' && value.trim().length > 0) {
+        return getLocalizedPlanText(value);
+    }
+    return value || '';
+}
+
+function getWorkoutTypeLabel(typeKey) {
+    if (!typeKey) return '';
+    const lang = typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'zh-CN';
+    if (typeof t === 'function') {
+        const translationKey = `log-form.type.${typeKey}`;
+        const translated = t(translationKey);
+        if (translated && translated !== translationKey) {
+            return translated;
+        }
+    }
+    const fallback = workoutTypeMap[typeKey];
+    if (fallback) {
+        if (typeof fallback === 'string') {
+            return fallback;
+        }
+        return fallback[lang] || fallback['zh-CN'];
+    }
+    return typeKey;
+}
+
 // 训练部位映射
 const workoutTypeMap = {
-    'chest': '前胸',
-    'arms': '手臂',
-    'abs': '腹部',
-    'back': '背部',
-    'legs': '腿部'
+    'chest': { 'zh-CN': '前胸', 'en': 'Chest' },
+    'arms': { 'zh-CN': '手臂', 'en': 'Arms' },
+    'abs': { 'zh-CN': '腹部', 'en': 'Abs' },
+    'back': { 'zh-CN': '背部', 'en': 'Back' },
+    'legs': { 'zh-CN': '腿部', 'en': 'Legs' }
 };
 
 // 当前状态
@@ -394,30 +564,31 @@ function displayWorkoutPlan(month, week) {
     }
 
     let html = '';
+    const mainDays = ['monday', 'wednesday', 'friday'];
     
-    // 显示周一、周三、周五的训练
-    ['monday', 'wednesday', 'friday'].forEach(day => {
-        if (plan[day]) {
+    mainDays.forEach(day => {
+        const dayPlan = plan[day];
+        if (dayPlan) {
             html += `
                 <div class="workout-card">
-                    <h4>${plan[day].title}</h4>
-                    <p><strong>${t('workout-card.duration')}</strong>${plan[day].duration}</p>
+                    <h4>${getLocalizedPlanText(dayPlan.title)}</h4>
+                    <p><strong>${t('workout-card.duration')}</strong>${formatDurationLabel(dayPlan.duration)}</p>
                     <ul>
-                        ${plan[day].exercises.map(ex => `<li>${ex}</li>`).join('')}
+                        ${dayPlan.exercises.map(ex => `<li>${getLocalizedPlanText(ex)}</li>`).join('')}
                     </ul>
                 </div>
             `;
         }
     });
 
-    // 显示周六的可选训练
     if (plan.saturday) {
+        const saturdayPlan = plan.saturday;
         html += `
             <div class="workout-card" style="border-left-color: #ff6b6b;">
-                <h4>${plan.saturday.title}</h4>
-                <p><strong>${t('workout-card.duration')}</strong>${plan.saturday.duration}</p>
+                <h4>${getLocalizedPlanText(saturdayPlan.title)}</h4>
+                <p><strong>${t('workout-card.duration')}</strong>${formatDurationLabel(saturdayPlan.duration)}</p>
                 <ul>
-                    ${plan.saturday.exercises.map(ex => `<li>${ex}</li>`).join('')}
+                    ${saturdayPlan.exercises.map(ex => `<li>${getLocalizedPlanText(ex)}</li>`).join('')}
                 </ul>
             </div>
         `;
@@ -441,8 +612,7 @@ function saveWorkout() {
         id: Date.now(),
         date: date,
         type: type,
-        typeText: workoutTypeMap[type],
-        duration: parseInt(duration),
+        duration: parseInt(duration, 10),
         notes: notes,
         month: currentMonth,
         week: currentWeek
@@ -467,19 +637,19 @@ function displayWorkoutHistory() {
         return;
     }
 
-    // 按日期排序，最新的在前
     const sortedHistory = [...workoutHistory].sort((a, b) => new Date(b.date) - new Date(a.date));
-    
-    // 只显示最近5条记录
     const recentHistory = sortedHistory.slice(0, 5);
     
     let html = '';
     recentHistory.forEach(workout => {
+        const durationValue = typeof workout.duration === 'number' ? workout.duration : parseInt(workout.duration, 10);
+        const durationText = Number.isNaN(durationValue) ? formatDurationLabel(workout.duration) : formatDurationLabel(durationValue);
+        const typeLabel = workout.type ? getWorkoutTypeLabel(workout.type) : (workout.typeText || '');
         html += `
             <div class="history-item">
                 <div class="date">${workout.date}</div>
-                <div class="type">${workout.typeText}</div>
-                <div class="duration">${t('workout-card.duration')}${workout.duration}分钟</div>
+                <div class="type">${typeLabel}</div>
+                <div class="duration">${t('workout-card.duration')}${durationText}</div>
                 ${workout.notes ? `<div class="notes">${workout.notes}</div>` : ''}
             </div>
         `;

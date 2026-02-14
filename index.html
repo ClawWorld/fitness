@@ -3,125 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claw健身教练 - 你的私人健身助手</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Claw健身教练 - 启动页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #00d4ff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+
+        .intro {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .intro h2 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .intro ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .intro li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #c0c0c0;
+        }
+
+        .intro li::before {
+            content: "💪";
+            position: absolute;
+            left: 0;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #1a1a2e;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .tips {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .tips h3 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        .tips p {
+            color: #c0c0c0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 3rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- 头部 -->
-        <header class="header">
-            <h1>💪 Claw健身教练</h1>
-            <p class="subtitle">你的私人健身助手</p>
-        </header>
+        <div class="logo">💪</div>
+        <h1>Claw健身教练</h1>
+        <p class="subtitle">你的私人健身助手</p>
 
-        <!-- 月份选择 -->
-        <section class="month-selector">
-            <h2>选择月份</h2>
-            <div class="month-buttons">
-                <button class="month-btn active" data-month="1">第1个月</button>
-                <button class="month-btn" data-month="2">第2个月</button>
-                <button class="month-btn" data-month="3">第3个月</button>
-            </div>
-        </section>
+        <div class="intro">
+            <h2>欢迎开始你的健身之旅！</h2>
+            <ul>
+                <li>专为初级健身者设计</li>
+                <li>每周3-4次训练，每次30-45分钟</li>
+                <li>3个月渐进式训练计划</li>
+                <li>记录训练数据，动态调整计划</li>
+            </ul>
+        </div>
 
-        <!-- 训练计划展示 -->
-        <section class="plan-section">
-            <h2>本月训练计划</h2>
-            <div class="week-tabs">
-                <button class="week-tab active" data-week="1">第1周</button>
-                <button class="week-tab" data-week="2">第2周</button>
-                <button class="week-tab" data-week="3">第3周</button>
-                <button class="week-tab" data-week="4">第4周</button>
-            </div>
+        <div class="btn-group">
+            <a href="app.html" class="btn btn-primary">开始训练 🚀</a>
+            <a href="plan-guide.html" class="btn btn-secondary">查看计划说明 📖</a>
+        </div>
 
-            <div class="plan-content" id="plan-content">
-                <!-- 动态加载训练计划 -->
-            </div>
-        </section>
+        <div class="tips">
+            <h3>⚠️ 重要提示</h3>
+            <p>在开始任何新的锻炼计划前，请咨询医生。训练时如有不适，请立即停止。保持正确的姿势比增加重量更重要。</p>
+        </div>
 
-        <!-- 训练记录 -->
-        <section class="log-section">
-            <h2>训练记录</h2>
-            <div class="log-form">
-                <div class="form-group">
-                    <label for="workout-date">训练日期</label>
-                    <input type="date" id="workout-date">
-                </div>
-                <div class="form-group">
-                    <label for="workout-type">训练部位</label>
-                    <select id="workout-type">
-                        <option value="chest">前胸</option>
-                        <option value="arms">手臂</option>
-                        <option value="abs">腹部</option>
-                        <option value="back">背部</option>
-                        <option value="legs">腿部</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="workout-duration">训练时长（分钟）</label>
-                    <input type="number" id="workout-duration" min="30" max="45" value="30">
-                </div>
-                <div class="form-group">
-                    <label for="workout-notes">训练备注</label>
-                    <textarea id="workout-notes" placeholder="记录你的感受、进步或需要改进的地方..."></textarea>
-                </div>
-                <button class="btn-primary" onclick="saveWorkout()">保存训练记录</button>
-            </div>
-
-            <div class="workout-history" id="workout-history">
-                <h3>近期训练记录</h3>
-                <div id="history-list">
-                    <!-- 动态加载历史记录 -->
-                </div>
-            </div>
-        </section>
-
-        <!-- 进度追踪 -->
-        <section class="progress-section">
-            <h2>进度追踪</h2>
-            <div class="progress-stats">
-                <div class="stat">
-                    <span class="stat-value" id="total-workouts">0</span>
-                    <span class="stat-label">总训练次数</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value" id="total-hours">0</span>
-                    <span class="stat-label">总训练时长（小时）</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value" id="current-week">1</span>
-                    <span class="stat-label">当前周数</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- 教练建议 -->
-        <section class="coach-section">
-            <h2>💪 教练建议</h2>
-            <div class="coach-tips">
-                <div class="tip">
-                    <strong>新手提示：</strong> 保持正确的姿势比增加重量更重要。如果感觉疼痛，请立即停止。
-                </div>
-                <div class="tip">
-                    <strong>恢复建议：</strong> 每次训练后确保有足够的休息时间，肌肉在休息时生长。
-                </div>
-                <div class="tip">
-                    <strong>营养提醒：</strong> 训练后30分钟内补充蛋白质，帮助肌肉恢复。
-                </div>
-            </div>
-        </section>
-
-        <!-- 页脚 -->
-        <footer class="footer">
+        <div class="footer">
             <p>© 2026 Claw健身教练 | 你的健身伙伴</p>
-            <p class="disclaimer">⚠️ 请在开始任何新的锻炼计划前咨询医生</p>
-        </footer>
+        </div>
     </div>
 
-    <!-- 语言切换器容器 -->
-    <div id="language-switcher-container" style="position: fixed; top: 10px; right: 10px; z-index: 1000;"></div>
+    <script>
+        // 简单的语言切换功能 - 只支持中英文
+        const languages = {
+            'zh-CN': '中文',
+            'en': 'English'
+        };
 
-    <script src="js/i18n.js"></script>
-    <script src="js/app.js"></script>
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('clawFitnessLanguage') || 'zh-CN';
+            const langKeys = Object.keys(languages);
+            const currentIndex = langKeys.indexOf(currentLang);
+            const nextIndex = (currentIndex + 1) % langKeys.length;
+            const nextLang = langKeys[nextIndex];
+            
+            localStorage.setItem('clawFitnessLanguage', nextLang);
+            alert('语言已切换为: ' + languages[nextLang]);
+        }
+    </script>
 </body>
 </html>

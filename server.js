@@ -23,7 +23,7 @@ const mimeTypes = {
 // 创建HTTP服务器
 const server = http.createServer((req, res) => {
     // 解析URL
-    let filePath = req.url === '/' ? '/start.html' : req.url;
+    let filePath = req.url === '/' ? '/index.html' : req.url;
     filePath = path.join(BASE_DIR, filePath);
     
     // 安全检查：防止目录遍历
@@ -49,7 +49,7 @@ const server = http.createServer((req, res) => {
                         <body style="font-family: Arial, sans-serif; text-align: center; padding: 50px;">
                             <h1>404 - 文件未找到</h1>
                             <p>请求的文件不存在: ${req.url}</p>
-                            <p><a href="/start.html">返回首页</a></p>
+                            <p><a href="/index.html">返回首页</a></p>
                         </body>
                     </html>
                 `);

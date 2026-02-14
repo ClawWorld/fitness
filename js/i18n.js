@@ -200,6 +200,17 @@ function setLanguage(lang) {
         currentLanguage = lang;
         localStorage.setItem('clawFitnessLanguage', lang);
         updateUI();
+        if (typeof updateInternationalTexts === 'function') {
+            updateInternationalTexts();
+        }
+        if (typeof displayWorkoutPlan === 'function' && typeof currentMonth !== 'undefined' && typeof currentWeek !== 'undefined') {
+            displayWorkoutPlan(currentMonth, currentWeek);
+        }
+        if (typeof updateStats === 'function') {
+            updateStats();
+        } else if (typeof displayWorkoutHistory === 'function') {
+            displayWorkoutHistory();
+        }
         return true;
     }
     return false;
