@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Plan Guide - Claw Fitness Coach</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .language-toggle {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+        }
+
+        .language-toggle a {
+            color: #a0a0a0;
+            text-decoration: none;
+            margin-left: 12px;
+            font-size: 0.9rem;
+        }
+
+        .language-toggle a.active {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #00d4ff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .header .back-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .header .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .content h2 {
+            color: #00d4ff;
+            margin: 25px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .content h3 {
+            color: #ff6b6b;
+            margin: 20px 0 10px 0;
+        }
+
+        .content h4 {
+            color: #00d4ff;
+            margin: 15px 0 8px 0;
+        }
+
+        .content p {
+            margin-bottom: 12px;
+            color: #c0c0c0;
+        }
+
+        .content ul, .content ol {
+            margin: 10px 0 10px 20px;
+            color: #c0c0c0;
+        }
+
+        .content li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+
+        .content strong {
+            color: #00d4ff;
+        }
+
+        .workout-plan {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .workout-plan h4 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .workout-plan ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .workout-plan li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #c0c0c0;
+        }
+
+        .workout-plan li::before {
+            content: "💪";
+            position: absolute;
+            left: 0;
+        }
+
+        .workout-plan .duration {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .safety-box {
+            background: rgba(255, 107, 107, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b6b;
+            margin: 20px 0;
+        }
+
+        .faq-box {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #00d4ff;
+            margin: 20px 0;
+        }
+
+        .faq-box .question {
+            font-weight: bold;
+            color: #00d4ff;
+            margin-top: 15px;
+        }
+
+        .faq-box .answer {
+            color: #c0c0c0;
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            color: #a0a0a0;
+            margin-bottom: 5px;
+        }
+
+        .footer .disclaimer {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="language-toggle">
+            <a href="plan-guide.html?lang=zh-CN">中文</a>
+            <a href="plan-guide-en.html?lang=en" class="active">English</a>
+        </div>
+
+        <header class="header">
+            <h1>💪 Training Plan Guide</h1>
+            <p>Claw Fitness Coach · Your Personal Fitness Assistant</p>
+            <a href="index.html?lang=en" class="back-btn">← Back to Home</a>
+        </header>
+
+        <div class="content">
+            <h2>Program Overview</h2>
+            <p>This is a three-month progressive training roadmap built for beginners. Each month raises the intensity slightly so you can build a consistent habit, master form, and get stronger without burning out.</p>
+
+            <h2>Training Principles</h2>
+            <h3>1. Progressive Overload</h3>
+            <ul>
+                <li><strong>Month 1 · Foundation:</strong> learn movement patterns, build base endurance.</li>
+                <li><strong>Month 2 · Intensify:</strong> add sets, reps, and new variations.</li>
+                <li><strong>Month 3 · Consolidate & Push:</strong> challenge yourself with higher density work.</li>
+            </ul>
+
+            <h3>2. Weekly Frequency</h3>
+            <ul>
+                <li><strong>3–4 sessions/week:</strong> Monday, Wednesday, Friday are mandatory; Saturday is optional full-body mobility + cardio.</li>
+                <li><strong>Session length:</strong> 30–45 minutes. Short, focused, and repeatable.</li>
+                <li><strong>Recovery:</strong> Tuesday/Thursday/Sunday are complete rest days.</li>
+            </ul>
+
+            <h3>3. Body-Part Split</h3>
+            <ul>
+                <li><strong>Monday:</strong> Chest + Arms (push muscles)</li>
+                <li><strong>Wednesday:</strong> Back + Core (pull + trunk)</li>
+                <li><strong>Friday:</strong> Legs (lower body strength)</li>
+                <li><strong>Saturday:</strong> Optional light full-body session</li>
+            </ul>
+
+            <h2>Month 1 · Foundation Phase</h2>
+            <h4>Goals</h4>
+            <ul>
+                <li>Build muscular endurance</li>
+                <li>Lock in proper technique</li>
+                <li>Create a sustainable training rhythm</li>
+            </ul>
+
+            <h4>Training Style</h4>
+            <ul>
+                <li>3 sets per movement, 8–15 reps</li>
+                <li>Rest 30–60 seconds</li>
+                <li>Form quality > load</li>
+            </ul>
+
+            <h4>Sample Week (Week 1)</h4>
+            <div class="workout-plan">
+                <h4>Monday · Chest + Arms</h4>
+                <ul>
+                    <li>Push-ups — 3 sets × 8–10 reps</li>
+                    <li>Dumbbell Bench Press — 3 sets × 10–12 reps</li>
+                    <li>Dumbbell Curls — 3 sets × 12–15 reps</li>
+                    <li>Hammer Curls — 3 sets × 12–15 reps</li>
+                    <li>Triceps Extensions — 3 sets × 12–15 reps</li>
+                </ul>
+                <p class="duration">Total Time: 35 minutes</p>
+            </div>
+
+            <div class="workout-plan">
+                <h4>Wednesday · Back + Core</h4>
+                <ul>
+                    <li>Dumbbell Rows — 3 sets × 10–12 reps</li>
+                    <li>Bent-Over Reverse Flyes — 3 sets × 12–15 reps</li>
+                    <li>Plank — 3 sets × 30 sec</li>
+                    <li>Crunches — 3 sets × 15–20 reps</li>
+                    <li>Russian Twists — 3 sets × 15 reps/side</li>
+                </ul>
+                <p class="duration">Total Time: 35 minutes</p>
+            </div>
+
+            <div class="workout-plan">
+                <h4>Friday · Legs</h4>
+                <ul>
+                    <li>Squats — 3 sets × 10–12 reps</li>
+                    <li>Lunges — 3 sets × 10 reps/leg</li>
+                    <li>Leg Curls — 3 sets × 12–15 reps</li>
+                    <li>Calf Raises — 3 sets × 15–20 reps</li>
+                    <li>Glute Bridges — 3 sets × 15–20 reps</li>
+                </ul>
+                <p class="duration">Total Time: 35 minutes</p>
+            </div>
+
+            <div class="workout-plan">
+                <h4>Saturday (Optional) · Light Full Body</h4>
+                <ul>
+                    <li>Jumping Jacks — 2 sets × 30 sec</li>
+                    <li>High Knees — 2 sets × 30 sec</li>
+                    <li>Push-ups — 2 sets × 8 reps</li>
+                    <li>Bodyweight Squats — 2 sets × 10 reps</li>
+                    <li>Plank — 2 sets × 30 sec</li>
+                </ul>
+                <p class="duration">Total Time: 20 minutes</p>
+            </div>
+
+            <h2>Month 2 · Intensification</h2>
+            <p>We add more total work, introduce new core moves, and extend time under tension.</p>
+            <ul>
+                <li>4 sets for major lifts, 12–18 reps</li>
+                <li>Add push-up variations, side planks, and single-leg calf raises</li>
+                <li>Optional Saturday session now includes burpees</li>
+            </ul>
+
+            <h2>Month 3 · Consolidate & Push</h2>
+            <p>The final month keeps the same structure but pushes reps into the 18–20 range, challenges your core with longer planks, and drives conditioning with higher-rep legs.</p>
+            <ul>
+                <li>Focus on tempo control and breathing</li>
+                <li>If a movement feels too easy at 20 reps, add load or slow the eccentric</li>
+                <li>Quality sleep + nutrition become critical for recovery</li>
+            </ul>
+
+            <h2>Safety Checklist</h2>
+            <div class="safety-box">
+                <ul>
+                    <li>Get medical clearance before starting a new program.</li>
+                    <li>Warm up joints (neck/shoulders/hips/knees) for 5 minutes before training.</li>
+                    <li>Stop immediately if you feel sharp pain or dizziness.</li>
+                    <li>Log every workout; note pain, fatigue, or skipped sets.</li>
+                    <li>Stretch or walk 5 minutes post-session to cool down.</li>
+                </ul>
+            </div>
+
+            <h2>Common Questions</h2>
+            <div class="faq-box">
+                <div class="question">Q: Can I train on consecutive days?</div>
+                <div class="answer">A: Preferably not. Keep at least one rest day between strength sessions so muscles rebuild properly.</div>
+
+                <div class="question">Q: What if I only have 20 minutes?</div>
+                <div class="answer">A: Prioritize compound moves (squats, push-ups, rows). Do 2 rounds instead of 3 and move with intention.</div>
+
+                <div class="question">Q: How do I know when to progress?</div>
+                <div class="answer">A: If you complete all prescribed reps with perfect form for two sessions in a row, add 2–3 reps or a bit of weight the next week.</div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2026 Claw Fitness Coach | Your Fitness Partner</p>
+            <p class="disclaimer">⚠️ Always consult your doctor before starting a new exercise program.</p>
+        </footer>
+    </div>
+
+    <script>
+        (function syncLanguagePreference() {
+            const langParam = new URLSearchParams(window.location.search).get('lang') || 'en';
+            localStorage.setItem('clawFitnessLanguage', langParam);
+        })();
+    </script>
+</body>
+</html>

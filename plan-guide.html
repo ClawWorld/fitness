@@ -25,6 +25,24 @@
             padding: 20px;
         }
 
+        .language-toggle {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+        }
+
+        .language-toggle a {
+            color: #a0a0a0;
+            text-decoration: none;
+            margin-left: 12px;
+            font-size: 0.9rem;
+        }
+
+        .language-toggle a.active {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
         /* 头部 */
         .header {
             text-align: center;
@@ -272,11 +290,15 @@
 </head>
 <body>
     <div class="container">
+        <div class="language-toggle">
+            <a href="plan-guide.html?lang=zh-CN" class="active">中文</a>
+            <a href="plan-guide-en.html?lang=en">English</a>
+        </div>
         <!-- 头部 -->
         <header class="header">
             <h1>💪 训练计划详细说明</h1>
             <p>Claw健身教练 - 你的私人健身助手</p>
-            <a href="index.html" class="back-btn">← 返回首页</a>
+            <a href="index.html?lang=zh-CN" class="back-btn">← 返回首页</a>
         </header>
 
         <!-- 内容区域 -->
@@ -612,22 +634,10 @@
     </div>
 
     <script>
-        // 简单的语言切换功能 - 只支持中英文
-        const languages = {
-            'zh-CN': '中文',
-            'en': 'English'
-        };
-
-        function toggleLanguage() {
-            const currentLang = localStorage.getItem('clawFitnessLanguage') || 'zh-CN';
-            const langKeys = Object.keys(languages);
-            const currentIndex = langKeys.indexOf(currentLang);
-            const nextIndex = (currentIndex + 1) % langKeys.length;
-            const nextLang = langKeys[nextIndex];
-            
-            localStorage.setItem('clawFitnessLanguage', nextLang);
-            alert('语言已切换为: ' + languages[nextLang]);
-        }
+        (function syncLanguagePreference() {
+            const langParam = new URLSearchParams(window.location.search).get('lang') || 'zh-CN';
+            localStorage.setItem('clawFitnessLanguage', langParam);
+        })();
     </script>
 </body>
 </html>

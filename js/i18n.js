@@ -221,6 +221,19 @@ function getCurrentLanguage() {
     return currentLanguage;
 }
 
+function getLanguageFromQuery() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const lang = params.get('lang');
+        if (lang && languages[lang]) {
+            return lang;
+        }
+    } catch (error) {
+        console.warn('Failed to parse language from query string:', error);
+    }
+    return null;
+}
+
 // 获取语言列表
 function getLanguages() {
     return languages;
@@ -258,23 +271,26 @@ function updateUI() {
 
 // 初始化语言
 function initLanguage() {
-    // 从localStorage加载保存的语言
-    const savedLanguage = localStorage.getItem('clawFitnessLanguage');
-    if (savedLanguage && languages[savedLanguage]) {
-        currentLanguage = savedLanguage;
+    const queryLanguage = getLanguageFromQuery();
+    if (queryLanguage) {
+        currentLanguage = queryLanguage;
+        localStorage.setItem('clawFitnessLanguage', queryLanguage);
     } else {
-        // 尝试检测浏览器语言
-        const browserLang = navigator.language || navigator.userLanguage;
-        if (browserLang && languages[browserLang]) {
-            currentLanguage = browserLang;
-        } else if (browserLang && browserLang.startsWith('zh')) {
-            currentLanguage = 'zh-CN';
-        } else if (browserLang && browserLang.startsWith('en')) {
-            currentLanguage = 'en';
+        const savedLanguage = localStorage.getItem('clawFitnessLanguage');
+        if (savedLanguage && languages[savedLanguage]) {
+            currentLanguage = savedLanguage;
+        } else {
+            const browserLang = navigator.language || navigator.userLanguage;
+            if (browserLang && languages[browserLang]) {
+                currentLanguage = browserLang;
+            } else if (browserLang && browserLang.startsWith('zh')) {
+                currentLanguage = 'zh-CN';
+            } else if (browserLang && browserLang.startsWith('en')) {
+                currentLanguage = 'en';
+            }
         }
     }
     
-    // 更新UI
     updateUI();
 }
 

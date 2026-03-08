@@ -20,6 +20,31 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            position: relative;
+        }
+
+        .language-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+
+        .language-toggle select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            color: #ffffff;
+            padding: 6px 10px;
+            outline: none;
+        }
+
+        .language-toggle option {
+            color: #000000;
         }
 
         .container {
@@ -169,53 +194,147 @@
     </style>
 </head>
 <body>
+    <div class="language-toggle">
+        <label for="welcome-language">🌐 Language</label>
+        <select id="welcome-language">
+            <option value="zh-CN">🇨🇳 中文</option>
+            <option value="en">🇺🇸 English</option>
+        </select>
+    </div>
+
     <div class="container">
         <div class="logo">💪</div>
-        <h1>Claw健身教练</h1>
-        <p class="subtitle">你的私人健身助手</p>
+        <h1 id="hero-title">Claw健身教练</h1>
+        <p class="subtitle" id="hero-subtitle">你的私人健身助手</p>
 
         <div class="intro">
-            <h2>欢迎开始你的健身之旅！</h2>
+            <h2 id="intro-title">欢迎开始你的健身之旅！</h2>
             <ul>
-                <li>专为初级健身者设计</li>
-                <li>每周3-4次训练，每次30-45分钟</li>
-                <li>3个月渐进式训练计划</li>
-                <li>记录训练数据，动态调整计划</li>
+                <li id="intro-item-1">专为初级健身者设计</li>
+                <li id="intro-item-2">每周3-4次训练，每次30-45分钟</li>
+                <li id="intro-item-3">3个月渐进式训练计划</li>
+                <li id="intro-item-4">记录训练数据，动态调整计划</li>
             </ul>
         </div>
 
         <div class="btn-group">
-            <a href="app.html" class="btn btn-primary">开始训练 🚀</a>
-            <a href="plan-guide.html" class="btn btn-secondary">查看计划说明 📖</a>
+            <a href="app.html" class="btn btn-primary" id="start-button">开始训练 🚀</a>
+            <a href="plan-guide.html" class="btn btn-secondary" id="guide-button">查看计划说明 📖</a>
         </div>
 
         <div class="tips">
-            <h3>⚠️ 重要提示</h3>
-            <p>在开始任何新的锻炼计划前，请咨询医生。训练时如有不适，请立即停止。保持正确的姿势比增加重量更重要。</p>
+            <h3 id="tips-title">⚠️ 重要提示</h3>
+            <p id="tips-text">在开始任何新的锻炼计划前，请咨询医生。训练时如有不适，请立即停止。保持正确的姿势比增加重量更重要。</p>
         </div>
 
         <div class="footer">
-            <p>© 2026 Claw健身教练 | 你的健身伙伴</p>
+            <p id="footer-text">© 2026 Claw健身教练 | 你的健身伙伴</p>
         </div>
     </div>
 
     <script>
-        // 简单的语言切换功能 - 只支持中英文
-        const languages = {
-            'zh-CN': '中文',
-            'en': 'English'
+        const welcomeTranslations = {
+            'zh-CN': {
+                heroTitle: 'Claw健身教练',
+                heroSubtitle: '你的私人健身助手',
+                introTitle: '欢迎开始你的健身之旅！',
+                introList: [
+                    '专为初级健身者设计',
+                    '每周3-4次训练，每次30-45分钟',
+                    '3个月渐进式训练计划',
+                    '记录训练数据，动态调整计划'
+                ],
+                startButton: '开始训练 🚀',
+                guideButton: '查看计划说明 📖',
+                tipsTitle: '⚠️ 重要提示',
+                tipsText: '在开始任何新的锻炼计划前，请咨询医生。训练时如有不适，请立即停止。保持正确的姿势比增加重量更重要。',
+                footer: '© 2026 Claw健身教练 | 你的健身伙伴'
+            },
+            'en': {
+                heroTitle: 'Claw Fitness Coach',
+                heroSubtitle: 'Your Personal Fitness Assistant',
+                introTitle: 'Welcome to Your Fitness Journey!',
+                introList: [
+                    'Designed for beginner lifters',
+                    'Train 3-4 times per week, 30-45 minutes each session',
+                    '3-month progressive training roadmap',
+                    'Track your sessions and adjust plans on the fly'
+                ],
+                startButton: 'Start Training 🚀',
+                guideButton: 'View Plan Guide 📖',
+                tipsTitle: '⚠️ Important Safety Note',
+                tipsText: 'Please consult your doctor before starting any new workout program. Stop immediately if you feel discomfort. Proper form matters more than adding weight.',
+                footer: '© 2026 Claw Fitness Coach | Your Fitness Partner'
+            }
         };
 
-        function toggleLanguage() {
-            const currentLang = localStorage.getItem('clawFitnessLanguage') || 'zh-CN';
-            const langKeys = Object.keys(languages);
-            const currentIndex = langKeys.indexOf(currentLang);
-            const nextIndex = (currentIndex + 1) % langKeys.length;
-            const nextLang = langKeys[nextIndex];
-            
-            localStorage.setItem('clawFitnessLanguage', nextLang);
-            alert('语言已切换为: ' + languages[nextLang]);
+        const welcomeLanguageSelect = document.getElementById('welcome-language');
+        const introItems = [
+            document.getElementById('intro-item-1'),
+            document.getElementById('intro-item-2'),
+            document.getElementById('intro-item-3'),
+            document.getElementById('intro-item-4')
+        ];
+        const startButton = document.getElementById('start-button');
+        const guideButton = document.getElementById('guide-button');
+
+        function updateWelcomeLinks(lang) {
+            if (startButton) {
+                startButton.setAttribute('href', `app.html?lang=${lang}`);
+            }
+            if (guideButton) {
+                const targetPage = lang === 'en' ? 'plan-guide-en.html' : 'plan-guide.html';
+                guideButton.setAttribute('href', `${targetPage}?lang=${lang}`);
+            }
         }
+
+        function applyWelcomeLanguage(lang) {
+            const texts = welcomeTranslations[lang] || welcomeTranslations['zh-CN'];
+            document.getElementById('hero-title').textContent = texts.heroTitle;
+            document.getElementById('hero-subtitle').textContent = texts.heroSubtitle;
+            document.getElementById('intro-title').textContent = texts.introTitle;
+            introItems.forEach((item, index) => {
+                if (item && texts.introList[index]) {
+                    item.textContent = texts.introList[index];
+                }
+            });
+            if (startButton) {
+                startButton.textContent = texts.startButton;
+            }
+            if (guideButton) {
+                guideButton.textContent = texts.guideButton;
+            }
+            document.getElementById('tips-title').textContent = texts.tipsTitle;
+            document.getElementById('tips-text').textContent = texts.tipsText;
+            document.getElementById('footer-text').textContent = texts.footer;
+            updateWelcomeLinks(lang);
+        }
+
+        function initWelcomeLanguage() {
+            const savedLang = localStorage.getItem('clawFitnessLanguage');
+            const browserLang = navigator.language || navigator.userLanguage;
+            let langToUse = 'zh-CN';
+
+            if (savedLang && welcomeTranslations[savedLang]) {
+                langToUse = savedLang;
+            } else if (browserLang && browserLang.startsWith('en')) {
+                langToUse = 'en';
+            }
+
+            welcomeLanguageSelect.value = langToUse;
+            localStorage.setItem('clawFitnessLanguage', langToUse);
+            applyWelcomeLanguage(langToUse);
+        }
+
+        welcomeLanguageSelect.addEventListener('change', (event) => {
+            const selectedLang = event.target.value;
+            localStorage.setItem('clawFitnessLanguage', selectedLang);
+            applyWelcomeLanguage(selectedLang);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initWelcomeLanguage();
+        });
     </script>
 </body>
 </html>
